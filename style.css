@@ -992,32 +992,159 @@ section { padding: var(--section-gap) 0; }
 .legal-close:hover { background: var(--accent-light); border-color: var(--accent); }
 
 /* =============================================================
-   GLOBAL MOBILE SAFEGUARDS
+   RESPONSIVE — MOBILE FIRST OVERRIDES
+   Breakpoints: 900 · 768 · 640 · 520 · 480 · 400 · 360 · 320
    ============================================================= */
-/* Prevent any element from causing horizontal scroll */
-html, body { max-width: 100%; overflow-x: hidden; }
 
-/* Ensure images and embeds never overflow */
-img, video, iframe, canvas, svg { max-width: 100%; }
+/* Prevent ALL horizontal overflow */
+html { overflow-x: hidden; }
+body { overflow-x: hidden; max-width: 100vw; }
+img, video, canvas, svg { max-width: 100%; }
 
-/* Tap target sizes for interactive elements */
-@media (max-width: 900px) {
-  .btn, .nav-cta, .hero-btn-p, .hero-btn-s,
-  .legal-close, button[type="submit"] {
-    min-height: 48px;
-  }
-  input, select, textarea {
-    min-height: 48px;
-    font-size: 1rem; /* prevents iOS zoom-on-focus */
-  }
+/* ── 768px and below ── */
+@media (max-width: 768px) {
+  :root { --section-gap: 4rem; }
 }
 
-/* Very small screens (Galaxy Fold, etc.) */
+/* ── 640px and below ── */
+@media (max-width: 640px) {
+  :root { --section-gap: 3.5rem; --nav-height: 58px; }
+
+  /* Hero */
+  .hero { padding-top: var(--nav-height); }
+  .hero-inner { padding: 1.5rem 1rem; }
+  .hero-glass {
+    padding: 2.25rem 1.5rem;
+    border-radius: 20px;
+  }
+  .hero-title {
+    font-size: clamp(1.9rem, 8vw, 2.8rem);
+    letter-spacing: -.03em;
+    margin-bottom: 1rem;
+  }
+  .hero-badge { font-size: .6rem; margin-bottom: 1.25rem; }
+  .hero-sub { font-size: .92rem; margin-bottom: 1.75rem; }
+  .hero-actions { gap: .65rem; margin-bottom: 1.5rem; }
+  .hero-chips { gap: .4rem; }
+  .hero-chip { font-size: .69rem; padding: .22rem .6rem; }
+
+  /* Navbar */
+  .nav-logo { font-size: 1rem; }
+}
+
+/* ── 520px and below ── */
+@media (max-width: 520px) {
+  /* Hero — stack buttons */
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-btn-p, .hero-btn-s {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Stack cards — 2 col */
+  .stack-grid { grid-template-columns: 1fr 1fr; gap: .85rem; }
+  .stack-card { padding: 1.1rem .9rem; }
+  .stack-icon { font-size: 1.8rem; margin-bottom: .6rem; }
+  .stack-card h3 { font-size: .95rem; }
+  .stack-card p  { font-size: .8rem; }
+
+  /* About floating cards hidden */
+  .about-floating-card { display: none; }
+  .about-visual { padding: 1rem 0; }
+}
+
+/* ── 480px and below ── */
+@media (max-width: 480px) {
+  :root { --section-gap: 3rem; }
+
+  /* Hero glass tighter */
+  .hero-glass { padding: 2rem 1.25rem; border-radius: 16px; }
+  .hero-title { font-size: clamp(1.75rem, 7.5vw, 2.4rem); }
+
+  /* Section headers */
+  .section-title { font-size: clamp(1.4rem, 5.5vw, 1.9rem); }
+
+  /* Pricing note */
+  .pricing-note { flex-direction: column; gap: .5rem; padding: .85rem 1rem; }
+
+  /* Pricing card */
+  .pricing-card { padding: 1.5rem 1.25rem; }
+  .pricing-price { font-size: 2rem; }
+
+  /* Contact form */
+  .contact-form-wrap { padding: 1.5rem 1.1rem; border-radius: var(--radius-lg); }
+  .form-row { grid-template-columns: 1fr; gap: .75rem; }
+
+  /* Footer bottom */
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: .4rem; }
+
+  /* Addons */
+  .addons-grid { grid-template-columns: 1fr; }
+}
+
+/* ── 400px and below ── */
+@media (max-width: 400px) {
+  :root { --nav-height: 56px; }
+
+  .hero-glass { padding: 1.75rem 1rem; border-radius: 14px; }
+  .hero-title { font-size: clamp(1.6rem, 7vw, 2rem); letter-spacing: -.02em; }
+  .hero-badge { font-size: .58rem; padding: .25rem .65rem; letter-spacing: .08em; }
+  .hero-sub { font-size: .88rem; }
+
+  /* Stack — single col on very narrow */
+  .stack-grid { grid-template-columns: 1fr; }
+
+  /* Process steps tighter */
+  .process-step { padding-left: 44px; }
+  .process-timeline::before { left: 14px; }
+  .step-dot { left: 6px; width: 16px; height: 16px; }
+  .step-content { padding: 1rem .9rem; }
+
+  /* Footer grid */
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── 360px and below (Galaxy S series, small Androids) ── */
+@media (max-width: 360px) {
+  :root { --section-gap: 2.5rem; }
+  .container { padding: 0 .85rem; }
+
+  .hero-inner { padding: 1.25rem .75rem; }
+  .hero-glass { padding: 1.5rem .9rem; border-radius: 12px; }
+  .hero-title { font-size: 1.55rem; letter-spacing: -.01em; }
+  .hero-chip  { font-size: .62rem; padding: .18rem .5rem; }
+
+  .section-title { font-size: 1.3rem; }
+  .about-card { width: 100%; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ── 320px and below (Galaxy Fold, SE) ── */
 @media (max-width: 320px) {
-  :root { --section-gap: 2.75rem; }
-  .container { padding: 0 .75rem; }
-  .section-title { font-size: 1.4rem; }
-  .hero-badge { font-size: .58rem; padding: .28rem .7rem; }
-  .hero-chips { gap: .35rem; }
-  .hero-chip  { font-size: .65rem; padding: .2rem .55rem; }
+  :root { --section-gap: 2rem; }
+  .container { padding: 0 .65rem; }
+
+  .hero-glass { padding: 1.25rem .75rem; }
+  .hero-title { font-size: 1.4rem; }
+  .hero-badge { display: none; } /* too cramped */
+  .hero-actions { gap: .5rem; }
+  .hero-btn-p, .hero-btn-s { font-size: .82rem; padding: .65rem 1rem; min-height: 44px; }
+
+  .pricing-card { padding: 1.25rem 1rem; }
+  .contact-form-wrap { padding: 1.25rem .85rem; }
+}
+
+/* ── Tap targets on all touch devices ── */
+@media (hover: none), (pointer: coarse) {
+  .btn, .hero-btn-p, .hero-btn-s,
+  button[type="submit"], .legal-close,
+  .nav-cta { min-height: 48px; }
+
+  input, select, textarea {
+    min-height: 48px;
+    font-size: 16px !important; /* stops iOS zoom-on-focus */
+  }
 }
