@@ -209,7 +209,7 @@ section{padding:var(--section-gap) 0}
 [data-theme="dark"] .hero-badge{color:#a78bfa;border-color:rgba(167,139,250,.25);background:rgba(167,139,250,.07)}
 
 .hero-title{font-family:var(--font-display);font-size:clamp(2.2rem,5.5vw,5.5rem);
-  font-weight:600;line-height:1.05;letter-spacing:-.04em;margin-bottom:1.25rem;
+  font-weight:800;line-height:1.05;letter-spacing:-.04em;margin-bottom:1.25rem;
   display:flex;flex-direction:column;gap:.04em;
   animation:glassFadeIn .8s .1s cubic-bezier(.4,0,.2,1) both}
 .ht1,.ht3{color:#0f172a}
