@@ -85,11 +85,18 @@ document.addEventListener('DOMContentLoaded', function () {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
     document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
   } else {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
   }
+  // Also trigger visible for any already-in-view elements on load
+  setTimeout(function () {
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) { el.classList.add('visible'); }
+    });
+  }, 100);
 });
 
 /* =============================================================
@@ -240,22 +247,12 @@ document.addEventListener('DOMContentLoaded', function () {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
-  function sync() {
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    isDark ? start() : stop();
-  }
-
-  // Watch for data-theme attribute changes instead of listening to button click
-  // This avoids any race condition with the theme script
-  var observer = new MutationObserver(function () { sync(); });
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  // Hero is always dark-navy — stars always run
+  function sync() { start(); }
 
   window.addEventListener('resize', function () {
-    if (document.documentElement.getAttribute('data-theme') === 'dark') {
-      resize();
-      buildStars();
-    }
+    resize(); buildStars();
   }, { passive: true });
 
-  sync(); // initial state on page load
+  sync();
 });
