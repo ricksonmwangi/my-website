@@ -486,8 +486,7 @@ section{padding:var(--section-gap) 0}
 /* Tablet portrait — single column, orb above content */
 @media(max-width:900px) {
   .hero {
-    min-height: 100vh;
-    min-height: 100svh;
+    min-height: calc(100dvh - var(--nav-height));
     padding-top: var(--nav-height);
     padding-bottom: 2.5rem;
   }
@@ -518,11 +517,11 @@ section{padding:var(--section-gap) 0}
 /* Mobile — 640px */
 @media(max-width:640px) {
   .hero {
-    min-height: calc(100vh - var(--nav-height));
-    min-height: calc(100svh - var(--nav-height));
-    padding-bottom: 2.5rem;
-    overflow: hidden;
-  }
+  position: relative;
+  min-height: calc(100dvh - var(--nav-height));
+  padding-top: var(--nav-height);
+  overflow: hidden;
+}
   /* Push circuit clear of content on mobile */
   .hero-circuit { width: 60%; height: 32%; opacity: .55; z-index: 0; }
   .hero-inner {
