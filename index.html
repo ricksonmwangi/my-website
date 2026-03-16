@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DevConsult &mdash; Professional Web Development | Nairobi, Kenya</title>
-  <meta name="description" content="Full-stack web development from Nairobi, Kenya. React, Node.js, PostgreSQL, Firebase and more. Fast, scalable, world-class solutions."/>
+  <title>Rimwa Tech &mdash; Building Smart Digital Solutions | Nairobi, Kenya</title>
+  <meta name="description" content="Rimwa Tech — We Design. We Develop. We Deliver. Full-stack web development from Nairobi, Kenya. React, Node.js, PostgreSQL, Firebase and more."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css?v=6"/>
 </head>
 <body>
 
@@ -16,7 +16,11 @@
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="#home" class="nav-logo">
-      <span class="logo-bracket">&lt;</span>Dev<span class="logo-accent">Consult</span><span class="logo-bracket">/&gt;</span>
+      <img src="rimwa-icon.png" alt="Rimwa Tech" class="nav-icon-img"/>
+      <span class="nav-wordmark">
+        <span class="nw-rimwa">RIMWA</span>
+        <span class="nw-tech">TECH</span>
+      </span>
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home"    class="nav-link active">Home</a></li>
@@ -43,39 +47,145 @@
 
 <!-- HOME -->
 <section class="hero" id="home">
-  <!-- animated background layers -->
-  <canvas class="hero-stars" id="heroStars" aria-hidden="true"></canvas>
-  <div class="hero-blobs" aria-hidden="true">
-    <div class="hero-blob hb1"></div>
-    <div class="hero-blob hb2"></div>
-    <div class="hero-blob hb3"></div>
-    <div class="hero-blob hb4"></div>
-  </div>
-  <div class="hero-dots" aria-hidden="true"></div>
 
-  <!-- centred content -->
+  <!-- Dark navy background + star particles -->
+  <canvas class="hero-stars" id="heroStars" aria-hidden="true"></canvas>
+
+  <!-- Subtle left-side blue glow blob -->
+  <div class="hero-glow-left" aria-hidden="true"></div>
+
+  <!-- Circuit traces bottom-right (matching reference) -->
+  <div class="hero-circuit" aria-hidden="true">
+    <svg viewBox="0 0 600 420" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax meet">
+      <path d="M600 400 L480 400 L480 350 L380 350 L380 300 L260 300 L260 380 L100 380" stroke="#1e90ff" stroke-width="1.8" stroke-linecap="round" opacity=".6"/>
+      <path d="M600 350 L530 350 L530 290 L430 290 L430 330 L310 330" stroke="#00cfff" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+      <path d="M600 290 L560 290 L560 230 L470 230 L470 270 L360 270 L360 310" stroke="#1e90ff" stroke-width="1" stroke-linecap="round" opacity=".45"/>
+      <path d="M600 420 L460 420 L460 380 L340 380 L340 410 L180 410" stroke="#00b4ff" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+      <path d="M600 230 L570 230 L570 170 L500 170 L500 210 L420 210" stroke="#56cfff" stroke-width="1" stroke-linecap="round" opacity=".38"/>
+      <!-- Nodes -->
+      <circle cx="480" cy="400" r="4" fill="#1e90ff" opacity=".85"/>
+      <circle cx="380" cy="350" r="4" fill="#00cfff" opacity=".85"/>
+      <circle cx="260" cy="300" r="3.5" fill="#1e90ff" opacity=".75"/>
+      <circle cx="530" cy="290" r="3.5" fill="#00cfff" opacity=".75"/>
+      <circle cx="430" cy="330" r="3" fill="#1e90ff" opacity=".65"/>
+      <circle cx="460" cy="380" r="4" fill="#00cfff" opacity=".85"/>
+      <circle cx="560" cy="230" r="3" fill="#56cfff" opacity=".65"/>
+      <circle cx="500" cy="170" r="3" fill="#1e90ff" opacity=".65"/>
+      <!-- Scatter glow dots -->
+      <circle cx="580" cy="200" r="2.5" fill="#56cfff" opacity=".55"/>
+      <circle cx="548" cy="145" r="2" fill="#1e90ff" opacity=".5"/>
+      <circle cx="592" cy="320" r="2.5" fill="#00cfff" opacity=".5"/>
+      <circle cx="520" cy="360" r="2" fill="#56cfff" opacity=".42"/>
+      <circle cx="588" cy="450" r="2.5" fill="#1e90ff" opacity=".45"/>
+      <circle cx="445" cy="250" r="1.8" fill="#00cfff" opacity=".4"/>
+    </svg>
+  </div>
+
   <div class="hero-inner">
-    <div class="hero-glass">
-      <div class="hero-badge">&#10022; &nbsp;Full-Stack Web Studio &nbsp;&#10022;</div>
-      <h1 class="hero-title">
-        <span class="ht1">We Craft</span>
-        <span class="ht2">Extraordinary</span>
-        <span class="ht3">Web Products.</span>
-      </h1>
-      <p class="hero-sub">Full-stack development from Nairobi, Kenya. We turn ambitious ideas into fast, beautiful, production-ready applications built for African businesses and global clients alike.</p>
-      <div class="hero-actions">
-        <a href="#pricing" class="btn hero-btn-p">View Pricing</a>
-        <a href="#process" class="btn hero-btn-s">How We Work &darr;</a>
+
+    <!-- LEFT: all content -->
+    <div class="hero-content">
+
+      <!-- Logo block: R icon + RIMWA / TECH text stacked -->
+      <div class="hero-logo-wrap">
+        <div class="hero-logo-block">
+          <img src="rimwa-icon.png" alt="Rimwa Tech" class="hero-icon-img"/>
+          <div class="hero-logo-wordmark">
+            <span class="hlw-rimwa">RIMWA</span>
+            <span class="hlw-tech">TECH<span class="hlw-dash">&mdash;</span></span>
+          </div>
+        </div>
       </div>
-      <div class="hero-chips">
-        <span class="hero-chip">React</span>
-        <span class="hero-chip">Node.js</span>
-        <span class="hero-chip">PostgreSQL</span>
-        <span class="hero-chip">Firebase</span>
-        <span class="hero-chip">Python</span>
-        <span class="hero-chip">MySQL</span>
+
+      <!-- Tagline -->
+      <p class="hero-tagline">BUILDING <strong>SMART DIGITAL SOLUTIONS</strong></p>
+
+      <!-- Main headline -->
+      <h1 class="hero-title">
+        <span class="ht-plain">We Design.&nbsp;</span><span class="ht-accent">We Develop.&nbsp;</span><span class="ht-plain">We Deliver.</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-sub">Transform your ideas into <strong>powerful websites</strong><br>and <strong>digital solutions.</strong></p>
+
+      <!-- CTA -->
+      <div class="hero-actions">
+        <a href="#contact" class="hero-btn-p">LET&rsquo;S BUILD SOMETHING GREAT &nbsp;&rarr;</a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Creative tech orb visual -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="tech-orb-wrap">
+
+        <!-- Outer glow rings -->
+        <div class="orb-ring orb-ring-1"></div>
+        <div class="orb-ring orb-ring-2"></div>
+        <div class="orb-ring orb-ring-3"></div>
+
+        <!-- Central sphere -->
+        <div class="orb-core">
+          <div class="orb-inner">
+            <div class="orb-grid"></div>
+            <div class="orb-pulse"></div>
+            <!-- R mark inside orb -->
+            <span class="orb-r">R</span>
+          </div>
+        </div>
+
+        <!-- Orbiting tech dots -->
+        <div class="orbit orbit-1">
+          <div class="orbit-dot od-1"></div>
+        </div>
+        <div class="orbit orbit-2">
+          <div class="orbit-dot od-2"></div>
+        </div>
+        <div class="orbit orbit-3">
+          <div class="orbit-dot od-3"></div>
+        </div>
+
+        <!-- Floating stat cards -->
+        <div class="hero-card hc-1">
+          <span class="hc-icon">&#9883;</span>
+          <div class="hc-text">
+            <strong>React &amp; Node</strong>
+            <span>Full-Stack</span>
+          </div>
+        </div>
+
+        <div class="hero-card hc-2">
+          <span class="hc-icon">&#128640;</span>
+          <div class="hc-text">
+            <strong>2–8 Weeks</strong>
+            <span>Fast Delivery</span>
+          </div>
+        </div>
+
+        <div class="hero-card hc-3">
+          <span class="hc-icon">&#127758;</span>
+          <div class="hc-text">
+            <strong>Nairobi, Kenya</strong>
+            <span>Global Standards</span>
+          </div>
+        </div>
+
+        <!-- Floating code fragments -->
+        <div class="code-frag cf-1">&lt;div&gt;</div>
+        <div class="code-frag cf-2">const app()</div>
+        <div class="code-frag cf-3">&#123; API &#125;</div>
+        <div class="code-frag cf-4">.then()</div>
+
+        <!-- Scatter dots -->
+        <div class="scatter-dots">
+          <span class="sd sd1"></span><span class="sd sd2"></span>
+          <span class="sd sd3"></span><span class="sd sd4"></span>
+          <span class="sd sd5"></span><span class="sd sd6"></span>
+        </div>
+
       </div>
     </div>
+
   </div>
 </section>
 
@@ -86,7 +196,7 @@
       <div class="about-visual">
         <div class="about-card">
           <div class="about-avatar">
-            <div class="avatar-placeholder"><span class="avatar-initials">DC</span></div>
+            <div class="avatar-placeholder"><span class="avatar-initials">RT</span></div>
             <div class="avatar-ring"></div>
           </div>
           <div class="about-card-tags">
@@ -107,8 +217,8 @@
       </div>
       <div class="about-content">
         <div class="section-label">About Us</div>
-        <h2 class="section-title">A Kenyan dev team that treats your project like our own.</h2>
-        <p class="about-lead">We are a full-stack web development studio based in Nairobi, Kenya &mdash; passionate about turning complex problems into elegant, high-performance solutions that grow your business.</p>
+        <h2 class="section-title">A Kenyan dev team building smart digital solutions.</h2>
+        <p class="about-lead">We are Rimwa Tech &mdash; a full-stack web development studio based in Nairobi, Kenya, passionate about turning complex problems into elegant, high-performance solutions that grow your business.</p>
         <p class="about-body">We understand the local market and build for it: mobile-first, data-efficient, and optimised for East African infrastructure realities &mdash; while delivering work that meets global standards. Every project includes clean documentation, responsive design, and ongoing support.</p>
         <div class="about-values">
           <div class="value-item">
@@ -334,7 +444,7 @@
         <div class="contact-methods">
           <div class="contact-method">
             <div class="method-icon">&#9993;</div>
-            <div><strong>Email</strong><span>hello@devconsult.dev</span></div>
+            <div><strong>Email</strong><span>hello@rimwatech.dev</span></div>
           </div>
           <div class="contact-method">
             <div class="method-icon">&#128172;</div>
@@ -419,7 +529,7 @@
         <h2>Privacy Policy</h2>
         <p class="legal-date">Last updated: January 1, 2026</p>
       </div>
-      <p>Welcome to DevConsult. Your privacy matters to us. This Privacy Policy explains how we collect, use, disclose, and protect information when you visit our website or engage our services.</p>
+      <p>Welcome to Rimwa Tech. Your privacy matters to us. This Privacy Policy explains how we collect, use, disclose, and protect information when you visit our website or engage our services.</p>
       <h3>1. Information We Collect</h3>
       <p>We may collect: contact information (name, email, phone), project details you share with us, usage data (pages visited, browser, IP address), and any communications you send us.</p>
       <h3>2. How We Use Your Information</h3>
@@ -431,13 +541,13 @@
       <h3>5. Third-Party Services</h3>
       <p>We may use third-party tools including email providers, project management tools, and payment processors (e.g. M-Pesa, Stripe). Each has its own privacy policy.</p>
       <h3>6. Your Rights</h3>
-      <p>You may request access to, correction of, or deletion of your personal data at any time by emailing hello@devconsult.dev.</p>
+      <p>You may request access to, correction of, or deletion of your personal data at any time by emailing hello@rimwatech.dev.</p>
       <h3>7. Children&rsquo;s Privacy</h3>
       <p>Our services are not directed to individuals under 18. We do not knowingly collect data from minors.</p>
       <h3>8. Changes</h3>
       <p>We may update this policy periodically. Changes are posted on this page with an updated date.</p>
       <h3>9. Contact</h3>
-      <p>Questions? Email hello@devconsult.dev or use the <a href="#contact" class="legal-back-link">contact form</a>.</p>
+      <p>Questions? Email hello@rimwatech.dev or use the <a href="#contact" class="legal-back-link">contact form</a>.</p>
     </div>
   </div>
 </section>
@@ -452,9 +562,9 @@
         <h2>Terms of Service</h2>
         <p class="legal-date">Last updated: January 1, 2026</p>
       </div>
-      <div class="legal-highlight">By engaging DevConsult or using this website, you agree to these Terms. Please read carefully before proceeding with any project.</div>
+      <div class="legal-highlight">By engaging Rimwa Tech or using this website, you agree to these Terms. Please read carefully before proceeding with any project.</div>
       <h3>1. Services</h3>
-      <p>DevConsult provides web development consulting including website design, web application development, database design, API development, and technical consulting. All work is scoped and confirmed in a written proposal before commencement.</p>
+      <p>Rimwa Tech provides web development consulting including website design, web application development, database design, API development, and technical consulting. All work is scoped and confirmed in a written proposal before commencement.</p>
       <h3>2. Proposals &amp; Agreements</h3>
       <p>A written proposal is valid for 14 days. Projects begin only upon written acceptance and receipt of the agreed deposit. We reserve the right to decline any project.</p>
       <h3>3. Payment Terms</h3>
@@ -476,7 +586,7 @@
       <h3>11. Governing Law</h3>
       <p>These Terms are governed by the laws of Kenya. Disputes are subject to the jurisdiction of the courts of Nairobi, Kenya.</p>
       <h3>12. Contact</h3>
-      <p>Questions? Email hello@devconsult.dev or use the <a href="#contact" class="legal-back-link">contact form</a>.</p>
+      <p>Questions? Email hello@rimwatech.dev or use the <a href="#contact" class="legal-back-link">contact form</a>.</p>
     </div>
   </div>
 </section>
@@ -488,10 +598,14 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#home" class="nav-logo">
-          <span class="logo-bracket">&lt;</span>Dev<span class="logo-accent">Consult</span><span class="logo-bracket">/&gt;</span>
+        <a href="#home" class="footer-logo-link">
+          <img src="rimwa-icon.png" alt="Rimwa Tech" class="nav-icon-img"/>
+          <span class="nav-wordmark">
+            <span class="nw-rimwa">RIMWA</span>
+            <span class="nw-tech">TECH</span>
+          </span>
         </a>
-        <p>Building fast, scalable web solutions for businesses and entrepreneurs &mdash; proudly from Nairobi, Kenya &#127472;&#127466;</p>
+        <p>Building smart digital solutions for businesses and entrepreneurs &mdash; proudly from Nairobi, Kenya &#127472;&#127466;</p>
       </div>
       <div class="footer-links">
         <h4>Navigation</h4>
@@ -520,9 +634,10 @@
           <li><a href="#pricing">Maintenance</a></li>
         </ul>
       </div>
-    </div>
+    </div><!-- /footer-grid -->
+
     <div class="footer-bottom">
-      <p>&copy; 2026 DevConsult. All rights reserved. &middot; Nairobi, Kenya &#127472;&#127466;</p>
+      <p>&copy; 2026 Rimwa Tech. All rights reserved. &middot; Nairobi, Kenya &#127472;&#127466;</p>
       <p>
         <a href="#" class="open-legal" data-target="privacy">Privacy</a> &middot;
         <a href="#" class="open-legal" data-target="terms">Terms</a>
