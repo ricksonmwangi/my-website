@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
    ============================================================= */
 document.addEventListener('DOMContentLoaded', function () {
   var animated = [
-    '.stack-card', '.process-step', '.pricing-card',
+    '.stack-card', '.process-step', '.pricing-card', '.why-card',
     '.about-values .value-item', '.contact-method', '.addon'
   ];
   animated.forEach(function (sel) {
@@ -90,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
   }
-  // Also trigger visible for any already-in-view elements on load
   setTimeout(function () {
     document.querySelectorAll('.reveal').forEach(function (el) {
       var rect = el.getBoundingClientRect();
@@ -100,10 +99,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* =============================================================
-   CONTACT FORM — validation and simulated submission
+   CONTACT FORM — validation and submission with spinner
    ============================================================= */
-
-  document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
   var form       = document.getElementById('contactForm');
   var successMsg = document.getElementById('formSuccess');
   if (!form) return;
@@ -133,19 +131,18 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!valid) return;
 
     var btn  = form.querySelector('[type="submit"]');
-    var orig = btn.textContent;
+    var btnText = btn.querySelector('.btn-text');
+    var spinner = btn.querySelector('.btn-spinner');
+    var orig = btnText.textContent;
 
-    btn.textContent = 'Sending…';
+    btnText.textContent = 'Sending';
+    spinner.style.display = 'inline-block';
     btn.disabled = true;
-
-    // THIS is what actually sends to Formspree
 
     fetch(form.action, {
       method: "POST",
       body: new FormData(form),
-      headers: {
-        'Accept': 'application/json'
-      }
+      headers: { 'Accept': 'application/json' }
     })
     .then(response => {
       if (response.ok) {
@@ -162,7 +159,8 @@ document.addEventListener('DOMContentLoaded', function () {
       alert("Network error. Try again.");
     })
     .finally(() => {
-      btn.textContent = orig;
+      btnText.textContent = orig;
+      spinner.style.display = 'none';
       btn.disabled = false;
     });
   });
@@ -173,6 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
 /* =============================================================
    LEGAL PANELS — show / hide Privacy and Terms sections
    ============================================================= */
@@ -218,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* =============================================================
-   HERO STARS — animated star field (dark mode only)
+   HERO STARS — animated star field
    ============================================================= */
 document.addEventListener('DOMContentLoaded', function () {
   var canvas = document.getElementById('heroStars');
@@ -229,7 +228,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var raf = null;
 
   function resize() {
-    // Use the hero section dimensions, not the canvas element itself
     var hero = canvas.parentElement || document.body;
     canvas.width  = hero.offsetWidth  || window.innerWidth;
     canvas.height = hero.offsetHeight || window.innerHeight;
@@ -276,7 +274,6 @@ document.addEventListener('DOMContentLoaded', function () {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
-  // Hero is always dark-navy — stars always run
   function sync() { start(); }
 
   window.addEventListener('resize', function () {
@@ -284,4 +281,20 @@ document.addEventListener('DOMContentLoaded', function () {
   }, { passive: true });
 
   sync();
+});
+
+/* =============================================================
+   BACK TO TOP BUTTON
+   ============================================================= */
+document.addEventListener('DOMContentLoaded', function () {
+  var backToTop = document.getElementById('backToTop');
+  if (!backToTop) return;
+
+  window.addEventListener('scroll', function () {
+    backToTop.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+
+  backToTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 });
