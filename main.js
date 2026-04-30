@@ -102,48 +102,77 @@ document.addEventListener('DOMContentLoaded', function () {
 /* =============================================================
    CONTACT FORM — validation and simulated submission
    ============================================================= */
-document.addEventListener('DOMContentLoaded', function () {
+
+  document.addEventListener('DOMContentLoaded', function () {
   var form       = document.getElementById('contactForm');
   var successMsg = document.getElementById('formSuccess');
   if (!form) return;
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    form.querySelectorAll('input, textarea, select').forEach(function (f) { f.style.borderColor = ''; });
+
+    form.querySelectorAll('input, textarea, select')
+      .forEach(f => f.style.borderColor = '');
 
     var valid = true;
+
     form.querySelectorAll('[required]').forEach(function (f) {
-      if (!f.value.trim()) { f.style.borderColor = '#ef4444'; valid = false; }
+      if (!f.value.trim()) {
+        f.style.borderColor = '#ef4444';
+        valid = false;
+      }
     });
 
     var emailField = document.getElementById('email');
-    if (emailField && emailField.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
+    if (emailField && emailField.value &&
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
       emailField.style.borderColor = '#ef4444';
       valid = false;
     }
+
     if (!valid) return;
 
     var btn  = form.querySelector('[type="submit"]');
     var orig = btn.textContent;
-    btn.textContent = 'Sending\u2026';
+
+    btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    setTimeout(function () {
-      form.reset();
+    // THIS is what actually sends to Formspree
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        form.reset();
+        if (successMsg) {
+          successMsg.classList.add('show');
+          setTimeout(() => successMsg.classList.remove('show'), 5000);
+        }
+      } else {
+        alert("Something went wrong. Try again.");
+      }
+    })
+    .catch(() => {
+      alert("Network error. Try again.");
+    })
+    .finally(() => {
       btn.textContent = orig;
       btn.disabled = false;
-      if (successMsg) {
-        successMsg.classList.add('show');
-        setTimeout(function () { successMsg.classList.remove('show'); }, 5000);
-      }
-    }, 1200);
+    });
   });
 
   form.querySelectorAll('input, textarea, select').forEach(function (f) {
-    f.addEventListener('input', function () { f.style.borderColor = ''; });
+    f.addEventListener('input', function () {
+      f.style.borderColor = '';
+    });
   });
 });
-
 /* =============================================================
    LEGAL PANELS — show / hide Privacy and Terms sections
    ============================================================= */
