@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rimwa Tech &mdash; Building Smart Digital Solutions | Nairobi, Kenya</title>
+  <title>Rimwa Tech — Building Smart Digital Solutions | Nairobi, Kenya</title>
   <meta name="description" content="Rimwa Tech — We Design. We Develop. We Deliver. Full-stack web development from Nairobi, Kenya. React, Node.js, PostgreSQL, Firebase and more."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;200;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,200;1,9..40,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css?v=6"/>
+  <link rel="stylesheet" href="style.css?v=7"/>
 </head>
 <body>
+
+<!-- SKIP TO CONTENT -->
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
@@ -43,7 +46,7 @@
   </div>
 </nav>
 
-<main>
+<main id="main-content">
 
 <!-- HOME -->
 <section class="hero" id="home">
@@ -54,7 +57,7 @@
   <!-- Subtle left-side blue glow blob -->
   <div class="hero-glow-left" aria-hidden="true"></div>
 
-  <!-- Circuit traces bottom-right (matching reference) -->
+  <!-- Circuit traces bottom-right -->
   <div class="hero-circuit" aria-hidden="true">
     <svg viewBox="0 0 600 420" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax meet">
       <path d="M600 400 L480 400 L480 350 L380 350 L380 300 L260 300 L260 380 L100 380" stroke="#1e90ff" stroke-width="1.8" stroke-linecap="round" opacity=".6"/>
@@ -62,7 +65,6 @@
       <path d="M600 290 L560 290 L560 230 L470 230 L470 270 L360 270 L360 310" stroke="#1e90ff" stroke-width="1" stroke-linecap="round" opacity=".45"/>
       <path d="M600 420 L460 420 L460 380 L340 380 L340 410 L180 410" stroke="#00b4ff" stroke-width="2" stroke-linecap="round" opacity=".55"/>
       <path d="M600 230 L570 230 L570 170 L200 170 L200 210 L420 210" stroke="#56cfff" stroke-width="1" stroke-linecap="round" opacity=".38"/>
-      <!-- Nodes -->
       <circle cx="480" cy="400" r="4" fill="#1e90ff" opacity=".85"/>
       <circle cx="380" cy="350" r="4" fill="#00cfff" opacity=".85"/>
       <circle cx="260" cy="300" r="3.5" fill="#1e90ff" opacity=".75"/>
@@ -71,7 +73,6 @@
       <circle cx="460" cy="380" r="4" fill="#00cfff" opacity=".85"/>
       <circle cx="560" cy="230" r="3" fill="#56cfff" opacity=".65"/>
       <circle cx="200" cy="170" r="3" fill="#1e90ff" opacity=".65"/>
-      <!-- Scatter glow dots -->
       <circle cx="580" cy="200" r="2.5" fill="#56cfff" opacity=".55"/>
       <circle cx="548" cy="145" r="2" fill="#1e90ff" opacity=".5"/>
       <circle cx="592" cy="320" r="2.5" fill="#00cfff" opacity=".5"/>
@@ -86,7 +87,7 @@
     <!-- LEFT: all content -->
     <div class="hero-content">
 
-      <!-- Logo block: R icon + RIMWA / TECH text stacked -->
+      <!-- Logo block -->
       <div class="hero-logo-wrap">
         <div class="hero-logo-block">
           <img src="rimwa-icon.png" alt="Rimwa Tech" class="hero-icon-img"/>
@@ -159,7 +160,6 @@
           <div class="orb-inner">
             <div class="orb-grid"></div>
             <div class="orb-pulse"></div>
-            <!-- R mark inside orb -->
             <span class="orb-r">R</span>
           </div>
         </div>
@@ -216,6 +216,38 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- WHY CHOOSE US (NEW) -->
+<section id="why-choose-us" style="background: var(--bg-secondary);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Why Rimwa Tech</div>
+      <h2 class="section-title">Built for your business. Priced for your budget.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">💰</span>
+        <h3>Fixed Pricing</h3>
+        <p>No hourly billing. You know the full cost upfront — every time.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">⚡</span>
+        <h3>Fast Delivery</h3>
+        <p>2–8 weeks from idea to launch. We don&rsquo;t waste your time.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🌍</span>
+        <h3>Global Standards</h3>
+        <p>Kenyan team, world-class code and design. Quality you can trust.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🎯</span>
+        <h3>Free Discovery Call</h3>
+        <p>30 minutes to align on your vision — no charge, no pressure.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -501,7 +533,7 @@
         <form 
          class="contact-form" 
          id="contactForm" 
-         action=https://formspree.io/f/mjglvkye 
+         action="https://formspree.io/f/mjglvkye" 
          method="POST"
          novalidate
          >
@@ -552,8 +584,9 @@
     <textarea name="Message" rows="4" required></textarea>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-full">
-    Send Message →
+  <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+    <span class="btn-text">Send Message →</span>
+    <span class="btn-spinner" style="display:none;"></span>
   </button>
 
   <div class="form-success" id="formSuccess">
@@ -639,6 +672,9 @@
 </section>
 
 </main>
+
+<!-- BACK TO TOP BUTTON -->
+<button id="backToTop" aria-label="Back to top">↑</button>
 
 <!-- FOOTER -->
 <footer class="footer">
